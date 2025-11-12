@@ -2,10 +2,13 @@ const express = require('express');
 const app = express();
 const port = 8080;
 
-app.get('/', (req, res) => {
-    res.send('Hola NodeJS con Express');
-});
+const inicioRoute = require('./routes/inicioRoute');
+const productosRoute = require('./routes/productosRoute');
+app.use('/', inicioRoute);
+app.use('/productos', productosRoute);
+
+
 
 app.listen(port, () => {
     console.log(`Servidor escuchando en http://localhost:${port}`);
-});
+}); 
